@@ -21,7 +21,7 @@ Headers
 | `Authorization` | `string` | **(必填)** bearer token |
 
 
-Body
+Body (formdata)
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -50,7 +50,6 @@ zipCode: 104
 street: {{$randomStreetAddress}}
 scope[]: post:product
 scope[]: put:product
-
 ```
 
 #### Response: 成功 204
@@ -88,7 +87,7 @@ Headers
 | `Authorization` | `string` | **(必填)** bearer token |
 
 
-Body
+Body (formdata)
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -114,7 +113,6 @@ birthday: 1942-01-08
 gender: male
 zipCode: 104
 street: {{$randomStreetAddress}}
-
 ```
 
 #### Response: 成功 204
@@ -187,7 +185,7 @@ Headers
 | `Authorization` | `string` | **(必填)** bearer token |
 
 
-Body
+Body (formdata)
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -196,7 +194,6 @@ Body
 ```
 scope[]: post:product
 scope[]: delete:product
-
 ```
 
 
@@ -218,7 +215,7 @@ Headers
 | `Authorization` | `string` | **(必填)** bearer token |
 
 
-Body
+Body (formdata)
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -227,7 +224,6 @@ Body
 ```
 scope[]: post:product
 scope[]: delete:product
-
 ```
 
 

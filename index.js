@@ -45,9 +45,9 @@ function generateMarkdownFromJson(json, num = 1) {
       lines.push('');
     }
     if (req.body != null) {
-      lines.push('Body\n');
+      lines.push(`Body (${req.bodyMode})\n`);
       lines.push(req.getBodyTable());
-      lines.push('```\n' + req.getBodyExample() + '\n```');
+      lines.push('```\n' + req.getBodyExample() + '```');
       lines.push('');
     }
     for (let j = 0; j < json.item[i].response.length; j++) {
