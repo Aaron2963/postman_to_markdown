@@ -18,7 +18,15 @@ for (let i = 0; i < process.argv.length; i++) {
 function generateMarkdownFromJson(json, num = 1) {
   let lines = [];
   // collection title
-  lines.push(`## ${num} ${json.info.name}`);
+  let name = json.info.name;
+  if (/^\d/.test(json.info.name)) {
+    let nameMatch = /^(\d+)\s?(.+)/.exec(json.info.name);
+    if (nameMatch) {
+      num = nameMatch[1];
+      name = nameMatch[2];
+    }
+  }
+  lines.push(`## ${num} ${name}`);
   lines.push('');
   lines.push(json.info.description);
   lines.push('');
@@ -44,10 +52,16 @@ function generateMarkdownFromJson(json, num = 1) {
       }
       lines.push('');
     }
+    if (req.query != null && req.query.length > 0) {
+      lines.push('Query String\n');
+      lines.push(req.getParamTable('query'));
+      lines.push('```\n' + req.getParamExample('query') + '```');
+      lines.push('');
+    }
     if (req.body != null) {
       lines.push(`Body (${req.bodyMode})\n`);
-      lines.push(req.getBodyTable());
-      lines.push('```\n' + req.getBodyExample() + '```');
+      lines.push(req.getParamTable());
+      lines.push('```\n' + req.getParamExample() + '```');
       lines.push('');
     }
     for (let j = 0; j < json.item[i].response.length; j++) {
